@@ -2,7 +2,6 @@ import pathlib
 import ffmpeg
 
 from math import floor
-from pprint import pp
 from rites import rituals
 
 p = rituals.Misc
