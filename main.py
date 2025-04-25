@@ -4,10 +4,11 @@ import yt_dlp
 import re
 
 from math import floor
-from rites import rituals
+from rites.rituals.printer import Printer
 
-p = rituals.Misc
 yt = yt_dlp.YoutubeDL()
+p = Printer()
+p.add_style("option", "OPT", 255, 218, 117)
 
 dict_conversions = {
     1: "MP3",
@@ -69,8 +70,8 @@ def main():
 
     # ==== PRINT OPTIONS ====
     for index, path in dict_paths.items():
-        print(f"{index}. {path}")
-    print(f"{int(len(dict_paths.keys())) + 1}. Download from YouTube")
+        p.print_custom("option", f"{index}. {path}")
+    p.print_custom("option", f"{int(len(dict_paths.keys())) + 1}. Download from YouTube")
 
 
     # ==== FILE CHOICE ====
@@ -90,7 +91,7 @@ def main():
 
     # ==== PRINT PROCESSES ====
     p.print_info(f"Selected file: {file_choice}")
-    print(f"1. Conversion\n2. Remove Audio\n3. Extract Audio\n4. Extract Audio - Keep Ext\n5. Trim\n6. Exit")
+    p.print_custom("option", "1. Conversion\n2. Remove Audio\n3. Extract Audio\n4. Extract Audio - Keep Ext\n5. Trim\n6. Exit")
 
 
     # ==== PROCESSING ====
@@ -102,7 +103,7 @@ def main():
         p.print_info(f"Conversing {file_choice} to:")
 
         for index, conversion in dict_conversions.items():
-            print(f"{index}. {conversion}")
+            p.print_custom("option", f"{index}. {conversion}")
 
         conversion_choice = getIntInput(">", lambda x: dict_conversions.keys().__contains__(x))
         if dict_conversions[conversion_choice] == "Exit":
