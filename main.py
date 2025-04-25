@@ -91,8 +91,13 @@ def main():
 
     # ==== PRINT PROCESSES ====
     p.print_info(f"Selected file: {file_choice}")
-    p.print_custom("option", "1. Conversion\n2. Remove Audio\n3. Extract Audio\n4. Extract Audio - Keep Ext\n5. Trim\n6. Exit")
-
+    p.print_custom("option", "1. Conversion")
+    p.print_custom("option", "2. Remove Audio")
+    p.print_custom("option", "3. Extract Audio")
+    p.print_custom("option", "4. Extract Audio - Keep Ext")
+    p.print_custom("option", "5. Trim")
+    p.print_custom("option", "6. Exit")
+                   
 
     # ==== PROCESSING ====
     process_choice = getIntInput(">", lambda x: x in {1, 2, 3, 4, 5, 6})
